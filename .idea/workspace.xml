@@ -11,7 +11,10 @@
       <change afterPath="$PROJECT_DIR$/Modelos/Estudiante.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Modelos/Inscripcion.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Modelos/Materia.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RoutesDepartamento.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/RoutesEstudiante.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RoutesInscripcion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RoutesMateria.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -45,12 +48,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Oskreduard/Documents/Mision MinTIC 2022/Ciclo 4/Proyecto_Clase/Project_C4/Controladores",
+    "last_opened_file_path": "C:/Users/Oskreduard/Documents/Mision MinTIC 2022/Ciclo 4/Proyecto_Clase/Project_C4",
     "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Oskreduard\Documents\Mision MinTIC 2022\Ciclo 4\Proyecto_Clase\Project_C4" />
       <recent name="C:\Users\Oskreduard\Documents\Mision MinTIC 2022\Ciclo 4\Proyecto_Clase\Project_C4\Controladores" />
     </key>
   </component>
