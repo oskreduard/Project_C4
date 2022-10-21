@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8688c323-fc1a-4424-9812-0ff77fa85b8c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controladores/ControladorDepartamento.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Controladores/ControladorEstudiante.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controladores/ControladorInscripcion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controladores/ControladorMateria.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Modelos/AbstractModelo.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Modelos/Departamento.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Modelos/Estudiante.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Modelos/Inscripcion.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Modelos/Materia.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/RoutesEstudiante.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,10 +45,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Oskreduard/Documents/Mision MinTIC 2022/Ciclo 4/Proyecto_Clase/Project_C4",
+    "last_opened_file_path": "C:/Users/Oskreduard/Documents/Mision MinTIC 2022/Ciclo 4/Proyecto_Clase/Project_C4/Controladores",
     "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Oskreduard\Documents\Mision MinTIC 2022\Ciclo 4\Proyecto_Clase\Project_C4\Controladores" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Proyecto_Clase" />
