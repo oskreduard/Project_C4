@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="52043151-c7e9-4841-b077-d61ce08c535a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Repositorios/InterfaceRepositorio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repositorios/RepositorioDepartamento.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repositorios/RepositorioEstudiante.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repositorios/RepositorioInscripcion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Repositorios/RepositorioMateria.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controladores/ControladorDepartamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controladores/ControladorDepartamento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controladores/ControladorEstudiante.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controladores/ControladorEstudiante.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controladores/ControladorInscripcion.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controladores/ControladorInscripcion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controladores/ControladorMateria.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controladores/ControladorMateria.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoutesDepartamento.py" beforeDir="false" afterPath="$PROJECT_DIR$/RoutesDepartamento.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoutesEstudiante.py" beforeDir="false" afterPath="$PROJECT_DIR$/RoutesEstudiante.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoutesInscripcion.py" beforeDir="false" afterPath="$PROJECT_DIR$/RoutesInscripcion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RoutesMateria.py" beforeDir="false" afterPath="$PROJECT_DIR$/RoutesMateria.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GWpV18Z7bIoUQPBVZoUnVYdjWC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Oskreduard/Documents/Mision MinTIC 2022/Ciclo 4/Proyecto_Clase/Project_C4/Repositorios"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Oskreduard\Documents\Mision MinTIC 2022\Ciclo 4\Proyecto_Clase\Project_C4\Repositorios" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="52043151-c7e9-4841-b077-d61ce08c535a" name="Changes" comment="" />
+      <created>1666514213322</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666514213322</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
