@@ -11,22 +11,38 @@ miControladorDepartamento=ControladorDepartamento()
 @app.route("/departamentos",methods=['GET'])
 def getDepartamentos():
     json=miControladorDepartamento.index()
-    return jsonify(json)
+    if not json:
+        return {"No se encuentra ningun Departamento en la Base de Datos"}
+    else:
+        return jsonify(json)
 @app.route("/departamentos",methods=['POST'])
 def crearDepartamento():
     data = request.get_json()
     json=miControladorDepartamento.create(data)
-    return jsonify(json)
+    if json:
+        return jsonify(json)
+        return {"Departamento creado exitosamente"}
+    else:
+        return jsonify(json)
 @app.route("/departamentos/<string:id>",methods=['GET'])
 def getDepartamento(id):
     json=miControladorDepartamento.show(id)
-    return jsonify(json)
+    if not json:
+        return {"No se encuentra ningun Departamento para el id en la Base de Datos"}
+    else:
+        return jsonify(json)
 @app.route("/departamentos/<string:id>",methods=['PUT'])
 def modificarDepartamento(id):
     data = request.get_json()
     json=miControladorDepartamento.update(id,data)
-    return jsonify(json)
+    if not json:
+        return {"Error al actualizar el Departamento"}
+    else:
+        return jsonify(json)
 @app.route("/departamentos/<string:id>",methods=['DELETE'])
 def eliminarDepartamento(id):
     json=miControladorDepartamento.delete(id)
-    return jsonify(json)
+    if not json:
+        return {"Error al eliminar el Departamento"}
+    else:
+        return jsonify(json)

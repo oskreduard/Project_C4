@@ -1,35 +1,21 @@
+from Repositorios.RepositorioInscripcion import RepositorioInscripcion
 from Modelos.Inscripcion import Inscripcion
 class ControladorInscripcion():
-
     def __init__(self):
-        print("Creando ControladorInscripcion")
-
+        self.repositorioInscripcion = RepositorioInscripcion()
     def index(self):
-        print("Listar todos las Inscripciones")
-        Inscripciones = {
-            "_id": "1",
-            "Inscripcion": "Uno",
-        }
-        return [Inscripciones]
-
-    def create(self, infoInscripcion):
-        print("Crear un Inscripcion")
-        laInscripcion = Inscripcion(infoInscripcion)
+        return self.repositorioInscripcion.findAll()
+    def create(self,infoInscripcion):
+        nuevaInscripcion=Inscripcion(infoInscripcion)
+        return self.repositorioInscripcion.save(nuevaInscripcion)
+    def show(self,id):
+        laInscripcion=Inscripcion(self.repositorioInscripcion.findById(id))
         return laInscripcion.__dict__
-
-    def show(self, id):
-        print("Mostrando una Inscripcion con id ", id)
-        laInscripcion = {
-            "_id": id,
-            "Inscripcion": "Uno",
-        }
-        return laInscripcion
-
-    def update(self, id, infoInscripcion):
-        print("Actualizando la Materia con id ", id)
-        laInscripcion = Inscripcion(infoInscripcion)
-        return laInscripcion.__dict__
-
-    def delete(self, id):
-        print("Elimiando la Materia con id ", id)
-        return {"deleted_count": 1}
+    def update(self,id,infoInscripcion):
+        InscripcionAcutal=Inscripcion(self.repositorioInscripcion.findById(id))
+        InscripcionAcutal.anio=infoInscripcion["anio"]
+        InscripcionAcutal.semestre = infoInscripcion["semestre"]
+        InscripcionAcutal.nota_final = infoInscripcion["nota_final"]
+        return self.repositorioInscripcion.save(estudianteActual)
+    def delete(self,id):
+        return self.repositorioEstudiante.delete(id)

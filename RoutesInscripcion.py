@@ -11,22 +11,37 @@ miControladorInscripcion=ControladorInscripcion()
 @app.route("/inscripciones",methods=['GET'])
 def getinscripciones():
     json=miControladorInscripcion.index()
-    return jsonify(json)
+    if not json:
+        return {"No se encuentra ninguna Inscripción en la Base de Datos"}
+    else:
+        return jsonify(json)
 @app.route("/inscripciones",methods=['POST'])
 def crearInscripcion():
     data = request.get_json()
     json=miControladorInscripcion.create(data)
-    return jsonify(json)
+    if json:
+        return jsonify(json)
+        return {"Inscripción creado exitosamente"}
+    else:
+        return jsonify(json)
 @app.route("/inscripciones/<string:id>",methods=['GET'])
 def getInscripcion(id):
     json=miControladorInscripcion.show(id)
-    return jsonify(json)
+    if not json:
+        return {"No se encuentra una Inscripción para el Id en la Base de datos"}
+    else:
+        return jsonify(json)
 @app.route("/inscripciones/<string:id>",methods=['PUT'])
 def modificarInscripcion(id):
     data = request.get_json()
     json=miControladorInscripcion.update(id,data)
-    return jsonify(json)
+    if not json:
+        return {"Error al actualizar la Inscripción"}
+    else:
+        return jsonify(json)
 @app.route("/inscripciones/<string:id>",methods=['DELETE'])
 def eliminarInscripcion(id):
-    json=miControladorInscripcion.delete(id)
-    return jsonify(json)
+    if not json:
+        return {"Error al Eliminar la Inscripción"}
+    else:
+        return jsonify(json)

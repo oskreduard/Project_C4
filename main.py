@@ -9,6 +9,9 @@ app=Flask(__name__)
 cors = CORS(app)
 
 import RoutesEstudiante
+import RoutesMateria
+import RoutesDepartamento
+import RoutesInscripcion
 
 ''' Creating the server '''
 def loadFileConfig():

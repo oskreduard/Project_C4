@@ -11,22 +11,39 @@ miControladorMateria=ControladorMateria()
 @app.route("/materias",methods=['GET'])
 def getmaterias():
     json=miControladorMateria.index()
-    return jsonify(json)
+    if not json:
+        return {"No se encuentra ninguna Materia en la Base de Datos"}
+    else:
+        return jsonify(json)
 @app.route("/materias",methods=['POST'])
 def crearMateria():
     data = request.get_json()
     json=miControladorMateria.create(data)
-    return jsonify(json)
+    if json:
+        return jsonify(json)
+        return {"Materia creado exitosamente"}
+    else:
+        return jsonify(json)
 @app.route("/materias/<string:id>",methods=['GET'])
 def getMateria(id):
     json=miControladorMateria.show(id)
-    return jsonify(json)
+    if not json:
+        return {"No se encuentra una Materia para el Id en la Base de datos"}
+    else:
+        return jsonify(json)
 @app.route("/materias/<string:id>",methods=['PUT'])
 def modificarMateria(id):
     data = request.get_json()
     json=miControladorMateria.update(id,data)
-    return jsonify(json)
+    if not json:
+        return {"Error al actualizar la Materia"}
+    else:
+        return jsonify(json)
 @app.route("/materias/<string:id>",methods=['DELETE'])
 def eliminarMateria(id):
     json=miControladorMateria.delete(id)
-    return jsonify(json)
+    if not json:
+        return {"Error al Eliminar la Materia"}
+    else:
+        return jsonify(json)
+
