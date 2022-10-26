@@ -1,9 +1,13 @@
 from Modelos.Materia import Materia
 from Repositorios.RepositorioMateria import RepositorioMateria
+from Repositorios.RepositorioDepartamento import RepositorioDepartamento
 from Modelos.Materia import Materia
+from Modelos.Departamento import Departamento
 class ControladorMateria():
     def __init__(self):
         self.repositorioMateria = RepositorioMateria()
+        self.repositorioDepartamento = RepositorioDepartamento()
+        print("Ingreso Controlador Materia")
     def index(self):
         return self.repositorioMateria.findAll()
     def create(self,infoMateria):
@@ -21,3 +25,12 @@ class ControladorMateria():
         return self.repositorioMateria.delete(id)
     def delete_all(self):
         return self.repositorioMateria.deleteAll()
+
+    """
+    Relación departamento y materia
+    """
+    def asignarDepartamento(self, id, id_departamento):
+        materiaActual = Materia(self.repositorioMateria.findById(id))
+        departamentoActual = Departamento(self.repositorioDepartamento.findById(id_departamento))
+        materiaActual.departamento = departamentoActual
+        return self.repositorioMateria.save(materiaActual)

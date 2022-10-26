@@ -7,6 +7,10 @@ from __main__ import app
 
 from Controladores.ControladorInscripcion import ControladorInscripcion
 miControladorInscripcion=ControladorInscripcion()
+from Controladores.ControladorMateria import ControladorMateria
+miControladorMateria=ControladorMateria()
+from Controladores.ControladorEstudiante import ControladorEstudiante
+miControladorEstudiante=ControladorEstudiante()
 
 @app.route("/inscripciones",methods=['GET'])
 def getinscripciones():
@@ -17,15 +21,16 @@ def getinscripciones():
         return jsonify(json)
     else:
         return jsonify(json)
-@app.route("/inscripciones",methods=['POST'])
-def crearInscripcion():
-    data = request.get_json()
-    json=miControladorInscripcion.create(data)
-    if json:
+@app.route("/inscripciones/estudiante/<string:id_estudiante>/materia/<string:id_materia>",methods=['POST'])
+def crearInscripcion(id_estudiante,id_materia):
+    validacion1 = miControladorMateria.show(id_materia)
+    validacion2 = miControladorEstudiante.show(id_estudiante)
+    if validacion1 == {} or validacion2 == {}:
         json = {}
-        json["message"] = "Inscripcion creada exitosamente"
-        return jsonify(json)
+        return {"Resultado": "No se encuentran la Materia o el Estudiante indicados"}
     else:
+        data = request.get_json()
+        json=miControladorInscripcion.create(data,id_estudiante,id_materia)
         return jsonify(json)
 @app.route("/inscripciones/<string:id>",methods=['GET'])
 def getInscripcion(id):
@@ -36,16 +41,17 @@ def getInscripcion(id):
         return jsonify(json)
     else:
         return jsonify(json)
-@app.route("/inscripciones/<string:id>",methods=['PUT'])
-def modificarInscripcion(id):
-    validacion = miControladorInscripcion.show(id)
-    if validacion == {}:
+@app.route("/inscripciones/<string:id_inscripcion>/estudiante/<string:id_estudiante>/materia/<string:id_materia>",methods=['PUT'])
+def modificarInscripcion(id_inscripcion,id_estudiante,id_materia):
+    validacion1 = miControladorInscripcion.show(id_inscripcion)
+    validacion2 = miControladorMateria.show(id_materia)
+    validacion3 = miControladorEstudiante.show(id_estudiante)
+    if validacion1 == {} or validacion2 == {} or validacion3 == {}:
         json = {}
-        json["message"] = "No se encuentra ninguna Inscripcion para el Id en la Base de datos"
-        return jsonify(json)
+        return {"Resultado": "No se encuentran los datos indicados indicados"}
     else:
         data = request.get_json()
-        json = miControladorInscripcion.update(id, data)
+        json=miControladorInscripcion.update(id_inscripcion,data,id_estudiante,id_materia)
         return jsonify(json)
 @app.route("/inscripciones/<string:id>",methods=['DELETE'])
 def eliminarInscripcion(id):

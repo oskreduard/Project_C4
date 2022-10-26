@@ -3,6 +3,7 @@ from Modelos.Estudiante import Estudiante
 class ControladorEstudiante():
     def __init__(self):
         self.repositorioEstudiante = RepositorioEstudiante()
+        print("Ingreso Controlador Estudiante")
     def index(self):
         return self.repositorioEstudiante.findAll()
     def create(self,infoEstudiante):
