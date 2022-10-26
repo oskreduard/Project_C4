@@ -12,7 +12,9 @@ miControladorMateria=ControladorMateria()
 def getmaterias():
     json=miControladorMateria.index()
     if not json:
-        return {"No se encuentra ninguna Materia en la Base de Datos"}
+        json = {}
+        json["message"] = "No se encuentra ninguna Materia en la Base de Datos"
+        return jsonify(json)
     else:
         return jsonify(json)
 @app.route("/materias",methods=['POST'])
@@ -20,30 +22,50 @@ def crearMateria():
     data = request.get_json()
     json=miControladorMateria.create(data)
     if json:
+        json = {}
+        json["message"] = "Materia creada exitosamente"
         return jsonify(json)
-        return {"Materia creado exitosamente"}
     else:
         return jsonify(json)
 @app.route("/materias/<string:id>",methods=['GET'])
 def getMateria(id):
     json=miControladorMateria.show(id)
-    if not json:
-        return {"No se encuentra una Materia para el Id en la Base de datos"}
+    if json == {}:
+        json = {}
+        json["message"] = "No se encuentra ninguna Materia para el Id en la Base de datos"
+        return jsonify(json)
     else:
         return jsonify(json)
 @app.route("/materias/<string:id>",methods=['PUT'])
 def modificarMateria(id):
-    data = request.get_json()
-    json=miControladorMateria.update(id,data)
-    if not json:
-        return {"Error al actualizar la Materia"}
+    validacion = miControladorMateria.show(id)
+    if validacion == {}:
+        json = {}
+        json["message"] = "No se encuentra ninguna Materia para el Id en la Base de datos"
+        return jsonify(json)
     else:
+        data = request.get_json()
+        json = miControladorMateria.update(id, data)
         return jsonify(json)
 @app.route("/materias/<string:id>",methods=['DELETE'])
 def eliminarMateria(id):
-    json=miControladorMateria.delete(id)
-    if not json:
-        return {"Error al Eliminar la Materia"}
-    else:
+    validacion = miControladorMateria.show(id)
+    if validacion == {}:
+        json = {}
+        json["message"] = "No se encuentra ninguna Materia para el Id en la Base de datos"
         return jsonify(json)
+    else:
+        data = request.get_json()
+        json = miControladorMateria.delete(id)
+        return jsonify(json)
+
+@app.route("/materias/All", methods=['DELETE'])
+def eliminarTodaslasMaterias():
+    validacion = miControladorMateria.index()
+    if validacion == []:
+        json = {}
+        return {"Resultado": "No se encuentran Materias en la base de datos!"}
+    else:
+        result = miControladorMateria.delete_all()
+        return result
 

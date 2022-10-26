@@ -19,3 +19,5 @@ class ControladorEstudiante():
         return self.repositorioEstudiante.save(estudianteActual)
     def delete(self,id):
         return self.repositorioEstudiante.delete(id)
+    def delete_all(self):
+        return self.repositorioEstudiante.deleteAll()

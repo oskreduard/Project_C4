@@ -13,6 +13,13 @@ import RoutesMateria
 import RoutesDepartamento
 import RoutesInscripcion
 
+'''Principal Route'''
+@app.route("/",methods=['GET'])
+def test():
+    json = {}
+    json["message"] = "Server running mision tic 2022 final..."
+    return jsonify(json)
+
 ''' Creating the server '''
 def loadFileConfig():
     with open('config.json') as f:

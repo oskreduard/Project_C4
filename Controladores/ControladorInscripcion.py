@@ -16,6 +16,8 @@ class ControladorInscripcion():
         InscripcionAcutal.anio=infoInscripcion["anio"]
         InscripcionAcutal.semestre = infoInscripcion["semestre"]
         InscripcionAcutal.nota_final = infoInscripcion["nota_final"]
-        return self.repositorioInscripcion.save(estudianteActual)
+        return self.repositorioInscripcion.save(InscripcionAcutal)
     def delete(self,id):
-        return self.repositorioEstudiante.delete(id)
+        return self.repositorioInscripcion.delete(id)
+    def delete_all(self):
+        return self.repositorioInscripcion.deleteAll()

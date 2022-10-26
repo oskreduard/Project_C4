@@ -14,6 +14,8 @@ class ControladorDepartamento():
     def update(self,id,infoDepartamento):
         DepartamentoActual=Departamento(self.repositorioDepartamento.findById(id))
         DepartamentoActual.nombre = infoDepartamento["nombre"]
-        return self.repositorioDepartamento.save(infoDepartamento)
+        return self.repositorioDepartamento.save(DepartamentoActual)
     def delete(self,id):
         return self.repositorioDepartamento.delete(id)
+    def delete_all(self):
+        return self.repositorioDepartamento.deleteAll()
