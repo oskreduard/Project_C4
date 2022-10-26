@@ -7,6 +7,7 @@ class ControladorMateria():
     def __init__(self):
         self.repositorioMateria = RepositorioMateria()
         self.repositorioDepartamento = RepositorioDepartamento()
+        print("Ingreso Controlador Materia")
     def index(self):
         return self.repositorioMateria.findAll()
     def create(self,infoMateria):

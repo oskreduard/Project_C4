@@ -2,6 +2,7 @@ from Repositorios.RepositorioDepartamento import RepositorioDepartamento
 from Modelos.Departamento import Departamento
 class ControladorDepartamento():
     def __init__(self):
+        print("Ingreso Controlador Departamento")
         self.repositorioDepartamento = RepositorioDepartamento()
     def index(self):
         return self.repositorioDepartamento.findAll()

@@ -9,6 +9,7 @@ class ControladorInscripcion():
         self.repositorioInscripcion = RepositorioInscripcion()
         self.repositorioEstudiantes = RepositorioEstudiante()
         self.repositorioMaterias = RepositorioMateria()
+        print("Ingreso Controlador Inscripcion")
     def index(self):
         return self.repositorioInscripcion.findAll()
 
