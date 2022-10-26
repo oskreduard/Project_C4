@@ -12,7 +12,9 @@ miControladorInscripcion=ControladorInscripcion()
 def getinscripciones():
     json=miControladorInscripcion.index()
     if not json:
-        return {"No se encuentra ninguna Inscripción en la Base de Datos"}
+        json = {}
+        json["message"] = "No se encuentra ninguna Inscripcion en la Base de Datos"
+        return jsonify(json)
     else:
         return jsonify(json)
 @app.route("/inscripciones",methods=['POST'])
@@ -20,28 +22,50 @@ def crearInscripcion():
     data = request.get_json()
     json=miControladorInscripcion.create(data)
     if json:
+        json = {}
+        json["message"] = "Inscripcion creada exitosamente"
         return jsonify(json)
-        return {"Inscripción creado exitosamente"}
     else:
         return jsonify(json)
 @app.route("/inscripciones/<string:id>",methods=['GET'])
 def getInscripcion(id):
     json=miControladorInscripcion.show(id)
-    if not json:
-        return {"No se encuentra una Inscripción para el Id en la Base de datos"}
+    if json == {}:
+        json = {}
+        json["message"] = "No se encuentra ninguna Inscripcion para el Id en la Base de datos"
+        return jsonify(json)
     else:
         return jsonify(json)
 @app.route("/inscripciones/<string:id>",methods=['PUT'])
 def modificarInscripcion(id):
-    data = request.get_json()
-    json=miControladorInscripcion.update(id,data)
-    if not json:
-        return {"Error al actualizar la Inscripción"}
+    validacion = miControladorInscripcion.show(id)
+    if validacion == {}:
+        json = {}
+        json["message"] = "No se encuentra ninguna Inscripcion para el Id en la Base de datos"
+        return jsonify(json)
     else:
+        data = request.get_json()
+        json = miControladorInscripcion.update(id, data)
         return jsonify(json)
 @app.route("/inscripciones/<string:id>",methods=['DELETE'])
 def eliminarInscripcion(id):
-    if not json:
-        return {"Error al Eliminar la Inscripción"}
-    else:
+    validacion = miControladorInscripcion.show(id)
+    if validacion == {}:
+        json = {}
+        json["message"] = "No se encuentra ninguna Inscripcion para el Id en la Base de datos"
         return jsonify(json)
+    else:
+        data = request.get_json()
+        json = miControladorInscripcion.delete(id)
+        return jsonify(json)
+
+@app.route("/inscripciones/All", methods=['DELETE'])
+def eliminarTodaslasInscripciones():
+    validacion = miControladorInscripcion.index()
+    if validacion == []:
+        json = {}
+        return {"Resultado": "No se encuentran Inscripciones en la base de datos!"}
+    else:
+        result = miControladorInscripcion.delete_all()
+        return result
+

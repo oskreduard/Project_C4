@@ -12,37 +12,62 @@ miControladorDepartamento=ControladorDepartamento()
 def getDepartamentos():
     json=miControladorDepartamento.index()
     if not json:
-        return {"No se encuentra ningun Departamento en la Base de Datos"}
+        json = {}
+        json["message"] = "No se encuentra ningun Departamento en la Base de Datos"
+        return jsonify(json)
     else:
         return jsonify(json)
 @app.route("/departamentos",methods=['POST'])
 def crearDepartamento():
     data = request.get_json()
-    json=miControladorDepartamento.create(data)
+    json = miControladorDepartamento.create(data)
     if json:
+        json = {}
+        json["message"] = "Departamento creado exitosamente"
         return jsonify(json)
-        return {"Departamento creado exitosamente"}
     else:
         return jsonify(json)
 @app.route("/departamentos/<string:id>",methods=['GET'])
 def getDepartamento(id):
     json=miControladorDepartamento.show(id)
-    if not json:
-        return {"No se encuentra ningun Departamento para el id en la Base de Datos"}
+    if json == {}:
+        json = {}
+        json["message"] = "No se encuentra ningun Departamento para el Id en la Base de datos"
+        return jsonify(json)
     else:
         return jsonify(json)
 @app.route("/departamentos/<string:id>",methods=['PUT'])
 def modificarDepartamento(id):
-    data = request.get_json()
-    json=miControladorDepartamento.update(id,data)
-    if not json:
-        return {"Error al actualizar el Departamento"}
+    validacion = miControladorDepartamento.show(id)
+    if validacion == {}:
+        json = {}
+        json["message"] = "No se encuentra ningun Departamento para el Id en la Base de datos"
+        return jsonify(json)
     else:
+        data = request.get_json()
+        json=miControladorDepartamento.update(id,data)
         return jsonify(json)
 @app.route("/departamentos/<string:id>",methods=['DELETE'])
 def eliminarDepartamento(id):
-    json=miControladorDepartamento.delete(id)
-    if not json:
-        return {"Error al eliminar el Departamento"}
-    else:
+    validacion = miControladorDepartamento.show(id)
+    if validacion == {}:
+        json = {}
+        json["message"] = "No se encuentra ningun Departamento para el Id en la Base de datos"
         return jsonify(json)
+    else:
+        data = request.get_json()
+        json = miControladorDepartamento.delete(id)
+        return jsonify(json)
+
+@app.route("/departamentos/All", methods=['DELETE'])
+def eliminarTodosLosDepartamentos():
+    validacion = miControladorDepartamento.index()
+    if validacion == []:
+        json = {}
+        return {"Resultado": "No se encuentran Departamentos en la base de datos!"}
+    else:
+        result = miControladorDepartamento.delete_all()
+        return result
+
+
+

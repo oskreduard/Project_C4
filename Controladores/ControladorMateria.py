@@ -18,4 +18,6 @@ class ControladorMateria():
         MateriaActual.creditos = infoMateria["creditos"]
         return self.repositorioMateria.save(MateriaActual)
     def delete(self,id):
-        return self.repositorioEstudiante.delete(id)
+        return self.repositorioMateria.delete(id)
+    def delete_all(self):
+        return self.repositorioMateria.deleteAll()
