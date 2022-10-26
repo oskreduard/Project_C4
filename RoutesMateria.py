@@ -8,6 +8,9 @@ from __main__ import app
 from Controladores.ControladorMateria import ControladorMateria
 miControladorMateria=ControladorMateria()
 
+from Controladores.ControladorDepartamento import ControladorDepartamento
+miControladorDepartamento=ControladorDepartamento()
+
 @app.route("/materias",methods=['GET'])
 def getmaterias():
     json=miControladorMateria.index()
@@ -68,4 +71,16 @@ def eliminarTodaslasMaterias():
     else:
         result = miControladorMateria.delete_all()
         return result
+@app.route("/materias/<string:id>/departamento/<string:id_departamento>",methods=['PUT'])
+def asignarDepartamentoAMateria(id,id_departamento):
+    validacion1 = miControladorMateria.show(id)
+    validacion2 = miControladorDepartamento.show(id_departamento)
+    if validacion1 == {} or validacion2 == {}:
+        json = {}
+        return {"Resultado": "No se encuentran la Materia o el Departamento indicados"}
+    else:
+        json = miControladorMateria.asignarDepartamento(id, id_departamento)
+        return jsonify(json)
+
+
 

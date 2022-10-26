@@ -1,22 +1,45 @@
 from Repositorios.RepositorioInscripcion import RepositorioInscripcion
+from Repositorios.RepositorioEstudiante import RepositorioEstudiante
+from Repositorios.RepositorioMateria import RepositorioMateria
 from Modelos.Inscripcion import Inscripcion
+from Modelos.Estudiante import Estudiante
+from Modelos.Materia import Materia
 class ControladorInscripcion():
     def __init__(self):
         self.repositorioInscripcion = RepositorioInscripcion()
+        self.repositorioEstudiantes = RepositorioEstudiante()
+        self.repositorioMaterias = RepositorioMateria()
     def index(self):
         return self.repositorioInscripcion.findAll()
-    def create(self,infoInscripcion):
+
+    """
+    Asignacion estudiante y materia a inscripción
+    """
+    def create(self,infoInscripcion,id_estudiante,id_materia):
         nuevaInscripcion=Inscripcion(infoInscripcion)
+        elEstudiante=Estudiante(self.repositorioEstudiantes.findById(id_estudiante))
+        laMateria=Materia(self.repositorioMaterias.findById(id_materia))
+        nuevaInscripcion.estudiante=elEstudiante
+        nuevaInscripcion.materia=laMateria
         return self.repositorioInscripcion.save(nuevaInscripcion)
     def show(self,id):
         laInscripcion=Inscripcion(self.repositorioInscripcion.findById(id))
         return laInscripcion.__dict__
-    def update(self,id,infoInscripcion):
-        InscripcionAcutal=Inscripcion(self.repositorioInscripcion.findById(id))
-        InscripcionAcutal.anio=infoInscripcion["anio"]
-        InscripcionAcutal.semestre = infoInscripcion["semestre"]
-        InscripcionAcutal.nota_final = infoInscripcion["nota_final"]
-        return self.repositorioInscripcion.save(InscripcionAcutal)
+
+    """
+    Modificación de inscripción (estudiante y materia)
+    """
+
+    def update(self, id, infoInscripcion, id_estudiante, id_materia):
+        laInscripcion = Inscripcion(self.repositorioInscripcion.findById(id))
+        laInscripcion.año = infoInscripcion["año"]
+        laInscripcion.semestre = infoInscripcion["semestre"]
+        laInscripcion.nota_final = infoInscripcion["nota_final"]
+        elEstudiante =Estudiante(self.repositorioEstudiantes.findById(id_estudiante))
+        laMateria = Materia(self.repositorioMaterias.findById(id_materia))
+        laInscripcion.estudiante = elEstudiante
+        laInscripcion.materia = laMateria
+        return self.repositorioInscripcion.save(laInscripcion)
     def delete(self,id):
         return self.repositorioInscripcion.delete(id)
     def delete_all(self):
